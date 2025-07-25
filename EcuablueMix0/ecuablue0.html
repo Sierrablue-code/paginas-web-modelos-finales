@@ -1,0 +1,1205 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Arándanos Premium del Ecuador | EcuaBlue</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.0/font/bootstrap-icons.css">
+    <style>
+        :root {
+            --azul-ecua-blue: #1a428a;
+            --morado-ecua-blue: #722282;
+            --verde-ecua-blue: #3dae2b;
+            --celeste-sierra-blue: #0093c9;
+            --amarillo-berrybest: #ffe500;
+            --azul-berrybest: #1a428a;
+            --rosado-berrybest: #d43861;
+            --degradado-berrybest: linear-gradient(135deg, #1a428a 0%, #d43861 100%);
+        }
+        
+        .bg-ecua-blue {
+            background-color: var(--azul-ecua-blue);
+            color: white;
+        }
+        
+        .bg-morado {
+            background-color: var(--morado-ecua-blue);
+            color: white;
+        }
+        
+        .bg-verde {
+            background-color: var(--verde-ecua-blue);
+            color: white;
+        }
+        
+        .bg-celeste {
+            background-color: var(--celeste-sierra-blue);
+            color: white;
+        }
+        
+        .bg-amarillo {
+            background-color: var(--amarillo-berrybest);
+        }
+        
+        .bg-berrybest-gradient {
+            background: var(--degradado-berrybest);
+            color: white;
+        }
+        
+        .text-berrybest-blue {
+            color: var(--azul-berrybest);
+        }
+        
+        .text-berrybest-pink {
+            color: var(--rosado-berrybest);
+        }
+        
+        .btn-berrybest {
+            background-color: var(--rosado-berrybest);
+            color: white;
+            border: none;
+            font-weight: 600;
+            padding: 12px 24px;
+            border-radius: 50px;
+            transition: all 0.3s ease;
+        }
+        
+        .btn-berrybest:hover {
+            background-color: #b82c51;
+            color: white;
+            transform: translateY(-3px);
+            box-shadow: 0 10px 20px rgba(0,0,0,0.1);
+        }
+        
+        .btn-berrybest-outline {
+            background-color: transparent;
+            color: var(--rosado-berrybest);
+            border: 2px solid var(--rosado-berrybest);
+            font-weight: 600;
+            padding: 10px 22px;
+            border-radius: 50px;
+            transition: all 0.3s ease;
+        }
+        
+        .btn-berrybest-outline:hover {
+            background-color: var(--rosado-berrybest);
+            color: white;
+            transform: translateY(-3px);
+        }
+        
+        .feature-icon {
+            font-size: 2.5rem;
+            margin-bottom: 1.5rem;
+            color: var(--verde-ecua-blue);
+            background: rgba(61, 174, 43, 0.1);
+            width: 80px;
+            height: 80px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 50%;
+        }
+        
+        .benefit-card {
+            border-left: 4px solid var(--verde-ecua-blue);
+            transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            background: white;
+            border-radius: 8px;
+            overflow: hidden;
+            height: 100%;
+        }
+        
+        .benefit-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 30px rgba(0,0,0,0.1);
+        }
+        
+        .benefit-card .card-body {
+            padding: 2rem;
+        }
+        
+        .product-card {
+            border-radius: 16px;
+            overflow: hidden;
+            transition: all 0.4s ease;
+            border: none;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+            height: 100%;
+        }
+        
+        .product-card:hover {
+            box-shadow: 0 15px 30px rgba(0,0,0,0.15);
+            transform: translateY(-5px);
+        }
+        
+        .hero-section {
+            background: linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.7)), url('https://images.unsplash.com/photo-1595231776513-1a228bcc9c1a?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80');
+            background-size: cover;
+            background-position: center;
+            background-attachment: fixed;
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .hero-section::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            height: 100px;
+            background: linear-gradient(to bottom, transparent, white);
+            z-index: 1;
+        }
+        
+        .hero-content {
+            position: relative;
+            z-index: 2;
+        }
+        
+        .section-title {
+            position: relative;
+            display: inline-block;
+            margin-bottom: 2rem;
+        }
+        
+        .section-title::after {
+            content: '';
+            position: absolute;
+            bottom: -10px;
+            left: 0;
+            width: 60px;
+            height: 4px;
+            background: var(--rosado-berrybest);
+            border-radius: 2px;
+        }
+        
+        .title-center .section-title::after {
+            left: 50%;
+            transform: translateX(-50%);
+        }
+        
+        .floating {
+            animation: floating 3s ease-in-out infinite;
+        }
+        
+        @keyframes floating {
+            0% { transform: translateY(0px); }
+            50% { transform: translateY(-15px); }
+            100% { transform: translateY(0px); }
+        }
+        
+        .testimonial-card {
+            background: white;
+            border-radius: 16px;
+            padding: 2rem;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.05);
+            position: relative;
+            margin-top: 2rem;
+        }
+        
+        .testimonial-card::before {
+            content: '\201C';
+            font-family: Georgia, serif;
+            font-size: 5rem;
+            color: rgba(0,0,0,0.05);
+            position: absolute;
+            top: 10px;
+            left: 20px;
+        }
+        
+        .client-logo {
+            height: 60px;
+            filter: grayscale(100%);
+            opacity: 0.7;
+            transition: all 0.3s ease;
+        }
+        
+        .client-logo:hover {
+            filter: grayscale(0%);
+            opacity: 1;
+        }
+        
+        .nav-pills .nav-link.active {
+            background-color: var(--rosado-berrybest);
+        }
+        
+        .nav-pills .nav-link {
+            color: var(--azul-berrybest);
+            font-weight: 500;
+        }
+        
+        .stats-item {
+            text-align: center;
+            padding: 2rem;
+            border-radius: 16px;
+            background: white;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+            transition: all 0.3s ease;
+        }
+        
+        .stats-item:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 15px 30px rgba(0,0,0,0.1);
+        }
+        
+        .stats-number {
+            font-size: 3rem;
+            font-weight: 700;
+            color: var(--rosado-berrybest);
+            margin-bottom: 0.5rem;
+        }
+        
+        .floating-image {
+            position: absolute;
+            z-index: 0;
+            animation: floating 6s ease-in-out infinite;
+        }
+        
+        .floating-image-1 {
+            top: 20%;
+            left: 5%;
+            animation-delay: 0s;
+        }
+        
+        .floating-image-2 {
+            top: 60%;
+            right: 5%;
+            animation-delay: 1s;
+        }
+        
+        .floating-image-3 {
+            bottom: 10%;
+            left: 15%;
+            animation-delay: 2s;
+        }
+        
+        .back-to-top {
+            position: fixed;
+            bottom: 30px;
+            right: 30px;
+            width: 50px;
+            height: 50px;
+            background: var(--rosado-berrybest);
+            color: white;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.2rem;
+            z-index: 999;
+            opacity: 0;
+            visibility: hidden;
+            transition: all 0.3s ease;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+        }
+        
+        .back-to-top.active {
+            opacity: 1;
+            visibility: visible;
+        }
+        
+        .form-control:focus {
+            border-color: var(--rosado-berrybest);
+            box-shadow: 0 0 0 0.25rem rgba(212, 56, 97, 0.25);
+        }
+
+
+        /* Responsive adjustments */
+        @media (max-width: 768px) {
+            .hero-section {
+                background-attachment: scroll;
+                min-height: 80vh;
+            }
+            
+            .display-3 {
+                font-size: 2.5rem;
+            }
+
+            .map-container iframe {
+                width: 100%;
+                height: 300px;
+            }
+        }
+    </style>
+</head>
+<body data-bs-spy="scroll" data-bs-target="#navbar">
+    <!-- Navigation -->
+    <nav id="navbar" class="navbar navbar-expand-lg navbar-light bg-white fixed-top shadow-sm">
+        <div class="container">
+            <a class="navbar-brand" href="#">
+                <img src="https://via.placeholder.com/180x60?text=EcuaBlue" alt="EcuaBlue" height="40">
+            </a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ms-auto">
+                    <li class="nav-item">
+                        <a class="nav-link active" href="#inicio">Inicio</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#productos">Productos</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#beneficios">Beneficios</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#eureka">Variedad Eureka</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#historia">Nuestra Historia</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#clientes">Clientes</a>
+                    </li>
+                    <li class="nav-item ms-lg-3 mt-2 mt-lg-0">
+                        <a class="btn btn-berrybest" href="#comprar">Comprar Ahora</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section id="inicio" class="hero-section">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-8 hero-content">
+                    <h1 class="display-3 fw-bold mb-4 text-white">Arándanos Premium del Ecuador</h1>
+                    <p class="lead fs-3 mb-5 text-white">Cultivamos más que fruta: cultivamos <span class="fw-bold" style="color: var(--amarillo-berrybest);">calidad</span>, <span class="fw-bold" style="color: var(--amarillo-berrybest);">sabor</span> y <span class="fw-bold" style="color: var(--amarillo-berrybest);">bienestar</span>.</p>
+                    <div class="d-flex flex-wrap gap-3">
+                        <a href="#comprar" class="btn btn-berrybest btn-lg px-4">Comprar Ahora</a>
+                        <a href="#productos" class="btn btn-berrybest-outline btn-lg px-4">Nuestros Productos</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Floating images -->
+        <img src="https://images.unsplash.com/photo-1590005024862-6b67679a29fb?ixlib=rb-1.2.1&auto=format&fit=crop&w=200&q=80" alt="Arándanos" class="floating-image floating-image-1 d-none d-lg-block" width="120">
+        <img src="https://images.unsplash.com/photo-1576186726115-4d51596775d1?ixlib=rb-1.2.1&auto=format&fit=crop&w=200&q=80" alt="Arándanos" class="floating-image floating-image-2 d-none d-lg-block" width="150">
+        <img src="https://images.unsplash.com/photo-1595231776513-1a228bcc9c1a?ixlib=rb-1.2.1&auto=format&fit=crop&w=200&q=80" alt="Arándanos" class="floating-image floating-image-3 d-none d-lg-block" width="100">
+    </section>
+
+    <!-- Stats Section -->
+    <section class="py-5 bg-light">
+        <div class="container py-4">
+            <div class="row g-4">
+                <div class="col-md-3">
+                    <div class="stats-item">
+                        <div class="stats-number">365</div>
+                        <h3 class="h5">Días de producción</h3>
+                        <p class="mb-0">Disponibilidad anual</p>
+                    </div>
+                </div>
+                <div class="col-md-3">
+                    <div class="stats-item">
+                        <div class="stats-number">100%</div>
+                        <h3 class="h5">Libre de residuos</h3>
+                        <p class="mb-0">Sin pesticidas químicos</p>
+                    </div>
+                </div>
+                <div class="col-md-3">
+                    <div class="stats-item">
+                        <div class="stats-number">#1</div>
+                        <h3 class="h5">Marca líder</h3>
+                        <p class="mb-0">En autoservicios</p>
+                    </div>
+                </div>
+                <div class="col-md-3">
+                    <div class="stats-item">
+                        <div class="stats-number">5+</div>
+                        <h3 class="h5">Países</h3>
+                        <p class="mb-0">Exportación directa</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Features Section -->
+    <section class="py-5">
+        <div class="container py-5">
+            <div class="row mb-5 text-center">
+                <div class="col">
+                    <h2 class="fw-bold section-title title-center">Arándanos Premium de Altura</h2>
+                    <p class="lead">En nuestras fincas de altura en la sierra ecuatoriana, producimos arándanos premium reconocidos por:</p>
+                </div>
+            </div>
+            <div class="row g-4">
+                <div class="col-md-3">
+                    <div class="text-center p-4 h-100">
+                        <div class="feature-icon mx-auto">
+                            <i class="bi bi-emoji-heart-eyes"></i>
+                        </div>
+                        <h3 class="h5 fw-bold">Sabor Diferenciado</h3>
+                        <p>Un perfil de sabor único que destaca entre otros arándanos, con notas equilibradas entre dulce y ácido.</p>
+                    </div>
+                </div>
+                <div class="col-md-3">
+                    <div class="text-center p-4 h-100">
+                        <div class="feature-icon mx-auto">
+                            <i class="bi bi-droplet"></i>
+                        </div>
+                        <h3 class="h5 fw-bold">Dulzura Natural</h3>
+                        <p>Nivel de azúcares naturales superior al promedio, con un balance perfecto que deleita el paladar.</p>
+                    </div>
+                </div>
+                <div class="col-md-3">
+                    <div class="text-center p-4 h-100">
+                        <div class="feature-icon mx-auto">
+                            <i class="bi bi-fullscreen"></i>
+                        </div>
+                        <h3 class="h5 fw-bold">Tamaño Premium</h3>
+                        <p>Frutos grandes y jugosos que superan el estándar del mercado, con diámetros de 18mm+.</p>
+                    </div>
+                </div>
+                <div class="col-md-3">
+                    <div class="text-center p-4 h-100">
+                        <div class="feature-icon mx-auto">
+                            <i class="bi bi-hand-index-thumb"></i>
+                        </div>
+                        <h3 class="h5 fw-bold">Firmeza Excepcional</h3>
+                        <p>Textura perfecta que garantiza frescura prolongada y resistencia al transporte.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Eureka Variety Section -->
+    <section id="eureka" class="py-5 bg-celeste text-white position-relative overflow-hidden">
+        <div class="container py-5 position-relative">
+            <div class="row align-items-center">
+                <div class="col-lg-6 mb-4 mb-lg-0">
+                    <span class="badge bg-white text-dark mb-3">Variedad Premium</span>
+                    <h2 class="fw-bold display-5 mb-4">¡Eureka! La mejor variedad del mundo</h2>
+                    <p class="lead">Somos los únicos representantes de Eureka en Ecuador, variedad australiana considerada la mejor del mundo y premiada con el Superior Taste Award.</p>
+                    <div class="d-flex align-items-center mb-4">
+                        <img src="https://via.placeholder.com/100x60?text=Superior+Taste" alt="Superior Taste Award" class="me-3">
+                        <span class="fw-bold">Certificado por el International Taste Institute</span>
+                    </div>
+                    <p>Gracias a nuestra combinación única de variedad premium, manejo tecnificado, microclima privilegiado en la sierra ecuatoriana y compromiso con la sostenibilidad, ofrecemos arándanos de altura los 365 días del año.</p>
+                    <ul class="list-unstyled">
+                        <li class="mb-2"><i class="bi bi-check-circle-fill me-2"></i> Cultivo a 2,800 metros sobre el nivel del mar</li>
+                        <li class="mb-2"><i class="bi bi-check-circle-fill me-2"></i> Riego por goteo tecnificado</li>
+                        <li class="mb-2"><i class="bi bi-check-circle-fill me-2"></i> Agricultura sostenible</li>
+                    </ul>
+                </div>
+                <div class="col-lg-6">
+                    <div class="position-relative">
+                        <img src="https://images.unsplash.com/photo-1577234286642-fc512a5f8f11?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80" alt="Arándanos Eureka" class="img-fluid rounded-4 shadow-lg">
+                        <div class="position-absolute bottom-0 start-0 bg-white text-dark p-3 rounded-end shadow" style="transform: translateY(50%);">
+                            <div class="d-flex align-items-center">
+                                <div class="bg-verde text-white rounded-circle p-3 me-3">
+                                    <i class="bi bi-award-fill fs-4"></i>
+                                </div>
+                                <div>
+                                    <h4 class="h6 mb-0 fw-bold">Premio a la Excelencia</h4>
+                                    <small>Mejor variedad 2023</small>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Quality Section -->
+    <section class="py-5 position-relative overflow-hidden">
+        <div class="container py-5 position-relative">
+            <div class="row align-items-center">
+                <div class="col-lg-6 mb-5 mb-lg-0">
+                    <div class="pe-lg-5">
+                        <h2 class="fw-bold section-title mb-4">Calidad Certificada</h2>
+                        <p class="lead">Cada arándano EcuaBlue pasa por un riguroso proceso de selección que garantiza excelencia en cada bocado.</p>
+                        <div class="d-flex mb-4">
+                            <div class="me-4">
+                                <div class="bg-light p-3 rounded-3 mb-2 text-center" style="width: 80px;">
+                                    <i class="bi bi-hand-thumbs-up fs-3 text-verde-ecua-blue"></i>
+                                </div>
+                                <h4 class="h6 mb-0 text-center">Cosecha Manual</h4>
+                            </div>
+                            <div class="me-4">
+                                <div class="bg-light p-3 rounded-3 mb-2 text-center" style="width: 80px;">
+                                    <i class="bi bi-eye fs-3 text-verde-ecua-blue"></i>
+                                </div>
+                                <h4 class="h6 mb-0 text-center">Selección Óptica</h4>
+                            </div>
+                            <div>
+                                <div class="bg-light p-3 rounded-3 mb-2 text-center" style="width: 80px;">
+                                    <i class="bi bi-thermometer-snow fs-3 text-verde-ecua-blue"></i>
+                                </div>
+                                <h4 class="h6 mb-0 text-center">Cadena de Frío</h4>
+                            </div>
+                        </div>
+                        <p>Nuestro proceso garantiza que cada arándano cumple con los más altos estándares de calidad antes de llegar a su mesa.</p>
+                        <div class="mt-4">
+                            <h4 class="h5 fw-bold">Certificaciones:</h4>
+                            <div class="d-flex flex-wrap gap-3 mt-3">
+                                <img src="https://via.placeholder.com/80x50?text=GAP" alt="GAP" class="img-fluid">
+                                <img src="https://via.placeholder.com/80x50?text=GlobalG.A.P." alt="GlobalG.A.P." class="img-fluid">
+                                <img src="https://via.placeholder.com/80x50?text=HACCP" alt="HACCP" class="img-fluid">
+                                <img src="https://via.placeholder.com/80x50?text=Orgánico" alt="Orgánico" class="img-fluid">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-6">
+                    <div class="position-relative">
+                        <img src="https://images.unsplash.com/photo-1590005024862-6b67679a29fb?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80" alt="Proceso de calidad" class="img-fluid rounded-4 shadow-lg">
+                        <div class="position-absolute top-0 end-0 bg-white p-3 rounded-start shadow" style="transform: translateY(-50%);">
+                            <div class="d-flex align-items-center">
+                                <div class="bg-verde text-white rounded-circle p-3 me-3">
+                                    <i class="bi bi-check-all fs-4"></i>
+                                </div>
+                                <div>
+                                    <h4 class="h6 mb-0 fw-bold">100% Natural</h4>
+                                    <small>Sin residuos químicos</small>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+   <!-- Super Fruit Section - Updated with dark text -->
+    <section id="beneficios" class="py-5 bg-verde position-relative">
+        <div class="container py-5 position-relative">
+            <div class="row mb-5">
+                <div class="col text-center">
+                    <h2 class="fw-bold display-5 mb-3 text-white">La Súper Fruta Snackeable</h2>
+                    <p class="lead mx-auto text-white" style="max-width: 700px;">Reconocidos por nutricionistas como uno de los alimentos más nutritivos del planeta, nuestros arándanos son el snack perfecto para una vida saludable.</p>
+                </div>
+            </div>
+            <div class="row g-4">
+                <div class="col-md-4">
+                    <div class="benefit-card">
+                        <div class="card-body">
+                            <div class="d-flex align-items-center mb-3">
+                                <div class="bg-verde text-white rounded-circle p-2 me-3">
+                                    <i class="bi bi-heart-pulse fs-4"></i>
+                                </div>
+                                <h3 class="h5 mb-0 text-dark">Salud Cardiovascular</h3>
+                            </div>
+                            <ul class="mb-0 text-dark">
+                                <li class="mb-2">Reduce la presión arterial</li>
+                                <li class="mb-2">Mejora el colesterol HDL</li>
+                                <li class="mb-2">Protege contra enfermedades del corazón</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="benefit-card">
+                        <div class="card-body">
+                            <div class="d-flex align-items-center mb-3">
+                                <div class="bg-verde text-white rounded-circle p-2 me-3">
+                                    <i class="bi bi-brain fs-4"></i>
+                                </div>
+                                <h3 class="h5 mb-0 text-dark">Función Cerebral</h3>
+                            </div>
+                            <ul class="mb-0 text-dark">
+                                <li class="mb-2">Mejora la memoria y concentración</li>
+                                <li class="mb-2">Protege contra el deterioro cognitivo</li>
+                                <li class="mb-2">Aumenta la conectividad neuronal</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="benefit-card">
+                        <div class="card-body">
+                            <div class="d-flex align-items-center mb-3">
+                                <div class="bg-verde text-white rounded-circle p-2 me-3">
+                                    <i class="bi bi-shield-check fs-4"></i>
+                                </div>
+                                <h3 class="h5 mb-0 text-dark">Sistema Inmunológico</h3>
+                            </div>
+                            <ul class="mb-0 text-dark">
+                                <li class="mb-2">Alto contenido de vitamina C</li>
+                                <li class="mb-2">Fortalece las defensas naturales</li>
+                                <li class="mb-2">Propiedades antiinflamatorias</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="benefit-card">
+                        <div class="card-body">
+                            <div class="d-flex align-items-center mb-3">
+                                <div class="bg-verde text-white rounded-circle p-2 me-3">
+                                    <i class="bi bi-lightning-charge fs-4"></i>
+                                </div>
+                                <h3 class="h5 mb-0 text-dark">Energía Natural</h3>
+                            </div>
+                            <ul class="mb-0 text-dark">
+                                <li class="mb-2">Fuente de vitamina B y manganeso</li>
+                                <li class="mb-2">Combate la fatiga</li>
+                                <li class="mb-2">Metabolismo energético</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="benefit-card">
+                        <div class="card-body">
+                            <div class="d-flex align-items-center mb-3">
+                                <div class="bg-verde text-white rounded-circle p-2 me-3">
+                                    <i class="bi bi-basket fs-4"></i>
+                                </div>
+                                <h3 class="h5 mb-0 text-dark">Control de Peso</h3>
+                            </div>
+                            <ul class="mb-0 text-dark">
+                                <li class="mb-2">Bajos en calorías (80kcal por taza)</li>
+                                <li class="mb-2">Alto contenido de fibra</li>
+                                <li class="mb-2">Promueve la saciedad</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="benefit-card">
+                        <div class="card-body">
+                            <div class="d-flex align-items-center mb-3">
+                                <div class="bg-verde text-white rounded-circle p-2 me-3">
+                                    <i class="bi bi-clock-history fs-4"></i>
+                                </div>
+                                <h3 class="h5 mb-0 text-dark">Antienvejecimiento</h3>
+                            </div>
+                            <ul class="mb-0 text-dark">
+                                <li class="mb-2">Alto poder antioxidante</li>
+                                <li class="mb-2">Combate radicales libres</li>
+                                <li class="mb-2">Protege las células</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="row mt-5">
+                <div class="col text-center">
+                    <div class="p-4 bg-white text-dark rounded-3 d-inline-block">
+                        <h3 class="fw-bold mb-3">¡El snack saludable que va contigo a todas partes!</h3>
+                        <p class="fs-5 mb-4">Fácil de llevar, fácil de consumir, muy fácil de disfrutar.</p>
+                        <a href="#comprar" class="btn btn-berrybest">Comprar Ahora</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Products Section -->
+    <section id="productos" class="py-5 bg-light">
+        <div class="container py-5">
+            <div class="row mb-5">
+                <div class="col text-center">
+                    <h2 class="fw-bold section-title title-center">Nuestras Marcas Premium</h2>
+                    <p class="lead">Dos marcas, una misma calidad excepcional</p>
+                </div>
+            </div>
+            
+            <!-- Product Tabs -->
+            <ul class="nav nav-pills mb-5 justify-content-center" id="product-tab" role="tablist">
+                <li class="nav-item" role="presentation">
+                    <button class="nav-link active" id="berrybest-tab" data-bs-toggle="pill" data-bs-target="#berrybest" type="button" role="tab" aria-controls="berrybest" aria-selected="true">BerryBest</button>
+                </li>
+                <li class="nav-item" role="presentation">
+                    <button class="nav-link" id="wowberries-tab" data-bs-toggle="pill" data-bs-target="#wowberries" type="button" role="tab" aria-controls="wowberries" aria-selected="false">WowBerries</button>
+                </li>
+            </ul>
+            
+            <div class="tab-content" id="product-tabContent">
+                <!-- BerryBest -->
+                <div class="tab-pane fade show active" id="berrybest" role="tabpanel" aria-labelledby="berrybest-tab">
+                    <div class="row align-items-center">
+                        <div class="col-lg-6 mb-5 mb-lg-0">
+                            <div class="product-card p-5">
+                                <div class="d-flex align-items-center mb-4">
+                                    <span class="badge bg-amarillo text-dark fs-6 me-3">Marca Líder</span>
+                                    <img src="https://via.placeholder.com/180x60?text=BerryBest" alt="BerryBest" height="40">
+                                </div>
+                                <p class="fs-5">Nuestra marca comercial #1, líder en la categoría de arándanos del Ecuador con el 65% de participación en el autoservicio más grande del país. Se ha consolidado como sinónimo de calidad, frescura y sabor premium.</p>
+                                
+                                <div class="row mt-4">
+                                    <div class="col-md-6">
+                                        <h4 class="h5 text-berrybest-pink fw-bold mb-3">Presentaciones:</h4>
+                                        <ul class="list-unstyled">
+                                            <li class="mb-2 d-flex align-items-center"><i class="bi bi-check-circle-fill text-verde-ecua-blue me-2"></i> 65 g. (Snack)</li>
+                                            <li class="mb-2 d-flex align-items-center"><i class="bi bi-check-circle-fill text-verde-ecua-blue me-2"></i> 125 g. (Individual)</li>
+                                            <li class="mb-2 d-flex align-items-center"><i class="bi bi-check-circle-fill text-verde-ecua-blue me-2"></i> 300 g. (Familiar)</li>
+                                        </ul>
+                                        
+                                        <p class="fw-bold mt-4"><i class="bi bi-shop me-2"></i> Disponible en Supermaxi y Megamaxi a nivel nacional.</p>
+                                    </div>
+                                    <div class="col-md-6">
+                                        <h4 class="h5 text-berrybest-pink fw-bold mb-3">Presentación Premium:</h4>
+                                        <ul class="list-unstyled">
+                                            <li class="mb-2 d-flex align-items-center"><i class="bi bi-star-fill text-warning me-2"></i> 500 g. (Familiar Premium)</li>
+                                        </ul>
+                                        
+                                        <div class="mt-4">
+                                            <h4 class="h5 text-berrybest-pink fw-bold mb-3">Pedidos a domicilio:</h4>
+                                            <ul class="list-unstyled">
+                                                <li class="mb-2 d-flex align-items-center"><i class="bi bi-whatsapp text-success me-2"></i> WhatsApp Directo</li>
+                                                <li class="d-flex align-items-center"><i class="bi bi-cart-check text-primary me-2"></i> Catálogo Mercately</li>
+                                            </ul>
+                                        </div>
+                                    </div>
+                                </div>
+                                
+                                <div class="mt-4 pt-3 border-top">
+                                    <a href="#comprar" class="btn btn-berrybest me-3">Comprar Ahora</a>
+                                    <a href="#" class="btn btn-berrybest-outline">Ver Recetas</a>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-lg-6">
+                            <div class="row g-4">
+                                <div class="col-6">
+                                    <img src="https://images.unsplash.com/photo-1577234286642-fc512a5f8f11?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=80" alt="BerryBest 65g" class="img-fluid rounded-3 shadow">
+                                </div>
+                                <div class="col-6">
+                                    <img src="https://images.unsplash.com/photo-1576186726115-4d51596775d1?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=80" alt="BerryBest 125g" class="img-fluid rounded-3 shadow">
+                                </div>
+                                <div class="col-12">
+                                    <img src="https://images.unsplash.com/photo-1590005024862-6b67679a29fb?ixlib=rb-1.2.1&auto=format&fit=crop&w=1000&q=80" alt="BerryBest 300g" class="img-fluid rounded-3 shadow">
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- WowBerries -->
+                <div class="tab-pane fade" id="wowberries" role="tabpanel" aria-labelledby="wowberries-tab">
+                    <div class="row align-items-center">
+                        <div class="col-lg-6 order-lg-2 mb-5 mb-lg-0">
+                            <div class="product-card p-5">
+                                <img src="https://via.placeholder.com/180x60?text=WowBerries" alt="WowBerries" class="mb-4" height="40">
+                                <p class="fs-5">Nuestra marca complementaria, que garantiza disponibilidad de nuestra fruta premium en más autoservicios y puntos de venta a nivel nacional, llevando la misma calidad BerryBest a más consumidores.</p>
+                                
+                                <div class="row mt-4">
+                                    <div class="col-md-6">
+                                        <h4 class="h5 text-berrybest-pink fw-bold mb-3">Presentaciones:</h4>
+                                        <ul class="list-unstyled">
+                                            <li class="mb-2 d-flex align-items-center"><i class="bi bi-check-circle-fill text-verde-ecua-blue me-2"></i> 65 g. (Snack)</li>
+                                            <li class="mb-2 d-flex align-items-center"><i class="bi bi-check-circle-fill text-verde-ecua-blue me-2"></i> 125 g. (Individual)</li>
+                                            <li class="mb-2 d-flex align-items-center"><i class="bi bi-check-circle-fill text-verde-ecua-blue me-2"></i> 300 g. (Familiar)</li>
+                                        </ul>
+                                    </div>
+                                    <div class="col-md-6">
+                                        <h4 class="h5 text-berrybest-pink fw-bold mb-3">Disponibilidad:</h4>
+                                        <ul class="list-unstyled">
+                                            <li class="mb-2 d-flex align-items-center"><i class="bi bi-shop me-2"></i> Mi Comisariato</li>
+                                            <li class="d-flex align-items-center"><i class="bi bi-shop me-2"></i> Santa María</li>
+                                        </ul>
+                                    </div>
+                                </div>
+                                
+                                <div class="mt-4 pt-3 border-top">
+                                    <a href="#comprar" class="btn btn-berrybest">Encontrar Tienda</a>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-lg-6 order-lg-1">
+                            <div class="row g-4">
+                                <div class="col-6">
+                                    <img src="https://images.unsplash.com/photo-1595231776513-1a228bcc9c1a?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=80" alt="WowBerries 65g" class="img-fluid rounded-3 shadow">
+                                </div>
+                                <div class="col-6">
+                                    <img src="https://images.unsplash.com/photo-1577234286642-fc512a5f8f11?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=80" alt="WowBerries 125g" class="img-fluid rounded-3 shadow">
+                                </div>
+                                <div class="col-12">
+                                    <img src="https://images.unsplash.com/photo-1576186726115-4d51596775d1?ixlib=rb-1.2.1&auto=format&fit=crop&w=1000&q=80" alt="WowBerries 300g" class="img-fluid rounded-3 shadow">
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+
+    <!-- Clients Section -->
+    <section id="clientes" class="py-5 bg-light">
+        <div class="container py-5">
+            <div class="row mb-5">
+                <div class="col text-center">
+                    <h2 class="fw-bold section-title title-center">Nuestros Clientes y Destinos</h2>
+                    <p class="lead">Llevando la calidad ecuatoriana al mundo</p>
+                </div>
+            </div>
+            <div class="row g-4 mb-5">
+                <div class="col-md-6">
+                    <div class="p-4 bg-white rounded-3 h-100">
+                        <h3 class="h4 fw-bold text-center mb-4">Exportación Internacional</h3>
+                        <div class="row g-4">
+                            <div class="col-6 text-center">
+                                <img src="https://via.placeholder.com/120x60?text=Family+Tree" alt="Family Tree Farms" class="client-logo img-fluid mb-3">
+                                <h4 class="h6 fw-bold">Family Tree Farms</h4>
+                                <small>Estados Unidos</small>
+                            </div>
+                            <div class="col-6 text-center">
+                                <img src="https://via.placeholder.com/120x60?text=BerryWorld" alt="BerryWorld" class="client-logo img-fluid mb-3">
+                                <h4 class="h6 fw-bold">BerryWorld</h4>
+                                <small>Europa y Reino Unido</small>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-6">
+                    <div class="p-4 bg-white rounded-3 h-100">
+                        <h3 class="h4 fw-bold text-center mb-4">Clientes Directos</h3>
+                        <div class="row g-2">
+                            <div class="col-4 text-center">
+                                <div class="p-3">
+                                    <i class="bi bi-globe fs-3 text-berrybest-blue"></i>
+                                    <h4 class="h6 fw-bold mt-2">Rusia</h4>
+                                </div>
+                            </div>
+                            <div class="col-4 text-center">
+                                <div class="p-3">
+                                    <i class="bi bi-globe fs-3 text-berrybest-blue"></i>
+                                    <h4 class="h6 fw-bold mt-2">Qatar</h4>
+                                </div>
+                            </div>
+                            <div class="col-4 text-center">
+                                <div class="p-3">
+                                    <i class="bi bi-globe fs-3 text-berrybest-blue"></i>
+                                    <h4 class="h6 fw-bold mt-2">Hong Kong</h4>
+                                </div>
+                            </div>
+                            <div class="col-4 text-center">
+                                <div class="p-3">
+                                    <i class="bi bi-globe fs-3 text-berrybest-blue"></i>
+                                    <h4 class="h6 fw-bold mt-2">Singapur</h4>
+                                </div>
+                            </div>
+                            <div class="col-4 text-center">
+                                <div class="p-3">
+                                    <i class="bi bi-globe fs-3 text-berrybest-blue"></i>
+                                    <h4 class="h6 fw-bold mt-2">China</h4>
+                                    <span class="badge bg-verde">Próximamente</span>
+                                </div>
+                            </div>
+                            <div class="col-4 text-center">
+                                <div class="p-3">
+                                    <i class="bi bi-plus-circle fs-3 text-berrybest-blue"></i>
+                                    <h4 class="h6 fw-bold mt-2">Más destinos</h4>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="row">
+                <div class="col text-center">
+                    <div class="p-4 bg-white rounded-3 d-inline-block">
+                        <h3 class="fw-bold mb-3">¿Interesado en distribuir nuestros arándanos?</h3>
+                        <p class="mb-4">Contáctenos para oportunidades de negocio y exportación.</p>
+                        <a href="#contacto" class="btn btn-berrybest">Contactar Ventas</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Buy Section -->
+    <section id="comprar" class="py-5 bg-morado text-white">
+        <div class="container py-5">
+            <div class="row mb-5">
+                <div class="col text-center">
+                    <h2 class="fw-bold display-5 mb-3">Compra Nuestros Arándanos</h2>
+                    <p class="lead">Disponibles en tus tiendas favoritas o directamente a tu domicilio</p>
+                </div>
+            </div>
+            <div class="row g-4 justify-content-center">
+                <div class="col-md-4">
+                    <div class="text-center p-4 bg-white text-dark rounded-3 shadow-sm h-100">
+                        <div class="bg-berrybest-gradient p-3 rounded-circle d-inline-flex mb-4">
+                            <i class="bi bi-cart fs-2"></i>
+                        </div>
+                        <h3 class="h4 fw-bold mb-3">Tiendas Físicas</h3>
+                        <p class="mb-4">Encuentra nuestros productos en los principales supermercados del país</p>
+                        <ul class="list-unstyled mb-4">
+                            <li class="mb-2 d-flex align-items-center justify-content-center"><i class="bi bi-check-circle-fill text-verde-ecua-blue me-2"></i> Supermaxi</li>
+                            <li class="mb-2 d-flex align-items-center justify-content-center"><i class="bi bi-check-circle-fill text-verde-ecua-blue me-2"></i> Megamaxi</li>
+                            <li class="mb-2 d-flex align-items-center justify-content-center"><i class="bi bi-check-circle-fill text-verde-ecua-blue me-2"></i> Mi Comisariato</li>
+                            <li class="d-flex align-items-center justify-content-center"><i class="bi bi-check-circle-fill text-verde-ecua-blue me-2"></i> Santa María</li>
+                        </ul>
+                        <a href="#" class="btn btn-berrybest">Encontrar Tienda Cercana</a>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="text-center p-4 bg-white text-dark rounded-3 shadow-sm h-100">
+                        <div class="bg-berrybest-gradient p-3 rounded-circle d-inline-flex mb-4">
+                            <i class="bi bi-phone fs-2"></i>
+                        </div>
+                        <h3 class="h4 fw-bold mb-3">Pedidos Online</h3>
+                        <p class="mb-4">Recibe nuestros arándanos frescos directamente en tu hogar</p>
+                        <ul class="list-unstyled mb-4">
+                            <li class="mb-2 d-flex align-items-center justify-content-center"><i class="bi bi-whatsapp text-success me-2"></i> WhatsApp: +593 99 999 9999</li>
+                            <li class="mb-2 d-flex align-items-center justify-content-center"><i class="bi bi-cart-check text-primary me-2"></i> Mercately</li>
+                            <li class="d-flex align-items-center justify-content-center"><i class="bi bi-instagram text-danger me-2"></i> Instagram @berrybestec</li>
+                        </ul>
+                        <a href="#" class="btn btn-berrybest">Ordenar Ahora</a>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="text-center p-4 bg-white text-dark rounded-3 shadow-sm h-100">
+                        <div class="bg-berrybest-gradient p-3 rounded-circle d-inline-flex mb-4">
+                            <i class="bi bi-basket fs-2"></i>
+                        </div>
+                        <h3 class="h4 fw-bold mb-3">Mayoristas</h3>
+                        <p class="mb-4">Oportunidades para restaurantes, hoteles y distribuidores</p>
+                        <ul class="list-unstyled mb-4">
+                            <li class="mb-2 d-flex align-items-center justify-content-center"><i class="bi bi-box-seam text-primary me-2"></i> Cajas de 2kg, 5kg y 10kg</li>
+                            <li class="mb-2 d-flex align-items-center justify-content-center"><i class="bi bi-calendar-check text-success me-2"></i> Entregas programadas</li>
+                            <li class="d-flex align-items-center justify-content-center"><i class="bi bi-truck text-info me-2"></i> Envíos a nivel nacional</li>
+                        </ul>
+                        <a href="#" class="btn btn-berrybest">Contactar Ventas</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contacto" class="py-5 bg-white">
+        <div class="container py-5">
+            <div class="row">
+                <div class="col-lg-6 mb-5 mb-lg-0">
+                    <h2 class="fw-bold section-title mb-4">Contáctanos</h2>
+                    <p class="lead mb-4">¿Tienes preguntas sobre nuestros productos? Escríbenos y te responderemos a la brevedad.</p>
+                    
+                    <div class="row g-4 mb-5">
+                        <div class="col-md-6">
+                            <div class="d-flex">
+                                <div class="me-3 text-berrybest-pink">
+                                    <i class="bi bi-geo-alt fs-3"></i>
+                                </div>
+                                <div>
+                                    <h4 class="h6 fw-bold">Oficinas Principales</h4>
+                                    <p class="mb-0 small">Av. Principal 1234, Quito, Ecuador</p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="d-flex">
+                                <div class="me-3 text-berrybest-pink">
+                                    <i class="bi bi-telephone fs-3"></i>
+                                </div>
+                                <div>
+                                    <h4 class="h6 fw-bold">Teléfono</h4>
+                                    <p class="mb-0 small">+593 2 123 4567</p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="d-flex">
+                                <div class="me-3 text-berrybest-pink">
+                                    <i class="bi bi-envelope fs-3"></i>
+                                </div>
+                                <div>
+                                    <h4 class="h6 fw-bold">Email</h4>
+                                    <p class="mb-0 small">info@ecublue.com</p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="d-flex">
+                                <div class="me-3 text-berrybest-pink">
+                                    <i class="bi bi-whatsapp fs-3"></i>
+                                </div>
+                                <div>
+                                    <h4 class="h6 fw-bold">WhatsApp</h4>
+                                    <p class="mb-0 small">+593 99 999 9999</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div>
+                        <h4 class="h5 fw-bold mb-3">Síguenos</h4>
+                        <div class="d-flex gap-3">
+                            <a href="#" class="text-berrybest-pink fs-4"><i class="bi bi-facebook"></i></a>
+                            <a href="#" class="text-berrybest-pink fs-4"><i class="bi bi-instagram"></i></a>
+                            <a href="#" class="text-berrybest-pink fs-4"><i class="bi bi-linkedin"></i></a>
+                            <a href="#" class="text-berrybest-pink fs-4"><i class="bi bi-youtube"></i></a>
+                        </div>
+                    </div>
+                    
+                    <div class="mt-5 map-container">
+                        <h4 class="h5 fw-bold mb-3">Ubicación</h4>
+                        <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d1683624.7371861632!2d-80.91088233554133!3d-0.5536065585972061!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x91d58d006fa28bb1%3A0xf57ecf0f561595b0!2sEcuaBlue!5e1!3m2!1ses!2sec!4v1753110207171!5m2!1ses!2sec" width="100%" height="300" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+                    </div>
+                </div>
+                <div class="col-lg-6">
+                    <div class="p-4 p-lg-5 bg-light rounded-3">
+                        <h3 class="h4 fw-bold mb-4">Envía un mensaje</h3>
+                        <form>
+                            <div class="mb-3">
+                                <label for="name" class="form-label">Nombre completo</label>
+                                <input type="text" class="form-control" id="name" required>
+                            </div>
+                            <div class="mb-3">
+                                <label for="email" class="form-label">Correo electrónico</label>
+                                <input type="email" class="form-control" id="email" required>
+                            </div>
+                            <div class="mb-3">
+                                <label for="phone" class="form-label">Teléfono</label>
+                                <input type="tel" class="form-control" id="phone">
+                            </div>
+                            <div class="mb-3">
+                                <label for="subject" class="form-label">Asunto</label>
+                                <select class="form-select" id="subject">
+                                    <option selected>Seleccione un tema</option>
+                                    <option>Consulta general</option>
+                                    <option>Ventas al por mayor</option>
+                                    <option>Exportaciones</option>
+                                    <option>Distribución</option>
+                                    <option>Otro</option>
+                                </select>
+                            </div>
+                            <div class="mb-3">
+                                <label for="message" class="form-label">Mensaje</label>
+                                <textarea class="form-control" id="message" rows="4" required></textarea>
+                            </div>
+                            <button type="submit" class="btn btn-berrybest w-100">Enviar Mensaje</button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="py-5 bg-ecua-blue text-white">
+        <div class="container py-4">
+            <div class="row g-4">
+                <div class="col-lg-4">
+                    <img src="https://via.placeholder.com/180x60?text=EcuaBlue+Logo" alt="EcuaBlue" class="mb-3" height="40">
+                    <p>Líderes en producción de arándanos premium en Ecuador. Calidad, sabor y bienestar en cada bocado.</p>
+                    <div class="d-flex gap-3 mt-4">
+                        <a href="#" class="text-white fs-5"><i class="bi bi-facebook"></i></a>
+                        <a href="#" class="text-white fs-5"><i class="bi bi-instagram"></i></a>
+                        <a href="#" class="text-white fs-5"><i class="bi bi-linkedin"></i></a>
+                        <a href="#" class="text-white fs-5"><i class="bi bi-youtube"></i></a>
+                    </div>
+                </div>
+                <div class="col-lg-2 col-md-4">
+                    <h4 class="h5 fw-bold mb-3">Productos</h4>
+                    <ul class="list-unstyled">
+                        <li class="mb-2"><a href="#" class="text-white text-decoration-none">BerryBest</a></li>
+                        <li class="mb-2"><a href="#" class="text-white text-decoration-none">WowBerries</a></li>
+                        <li class="mb-2"><a href="#" class="text-white text-decoration-none">Presentaciones</a></li>
+                        <li class="mb-2"><a href="#" class="text-white text-decoration-none">Pedidos especiales</a></li>
+                    </ul>
+                </div>
+                <div class="col-lg-2 col-md-4">
+                    <h4 class="h5 fw-bold mb-3">Empresa</h4>
+                    <ul class="list-unstyled">
+                        <li class="mb-2"><a href="#" class="text-white text-decoration-none">Nosotros</a></li>
+                        <li class="mb-2"><a href="#" class="text-white text-decoration-none">Sostenibilidad</a></li>
+                        <li class="mb-2"><a href="#" class="text-white text-decoration-none">Trabaja con nosotros</a></li>
+                        <li class="mb-2"><a href="#" class="text-white text-decoration-none">Noticias</a></li>
+                    </ul>
+                </div>
+                <div class="col-lg-2 col-md-4">
+                    <h4 class="h5 fw-bold mb-3">Recursos</h4>
+                    <ul class="list-unstyled">
+                        <li class="mb-2"><a href="#" class="text-white text-decoration-none">Recetas</a></li>
+                        <li class="mb-2"><a href="#" class="text-white text-decoration-none">Beneficios</a></li>
+                        <li class="mb-2"><a href="#" class="text-white text-decoration-none">Preguntas frecuentes</a></li>
+                        <li class="mb-2"><a href="#" class="text-white text-decoration-none">Blog</a></li>
+                    </ul>
+                </div>
+                <div class="col-lg-2">
+                    <h4 class="h5 fw-bold mb-3">Legal</h4>
+                    <ul class="list-unstyled">
+                        <li class="mb-2"><a href="#" class="text-white text-decoration-none">Términos y condiciones</a></li>
+                        <li class="mb-2"><a href="#" class="text-white text-decoration-none">Política de privacidad</a></li>
+                        <li class="mb-2"><a href="#" class="text-white text-decoration-none">Política de cookies</a></li>
+                    </ul>
+                </div>
+            </div>
+            <hr class="my-4">
+            <div class="row">
+                <div class="col-md-6 text-center text-md-start">
+                    <p class="mb-0 small">© 2023 EcuaBlue. Todos los derechos reservados.</p>
+                </div>
+                <div class="col-md-6 text-center text-md-end">
+                    <p class="mb-0 small">Desarrollado con <i class="bi bi-heart-fill text-danger"></i> en Ecuador</p>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Back to Top -->
+    <a href="#" class="back-to-top"><i class="bi bi-arrow-up"></i></a>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script>
+        // Back to top button
+        const backToTopButton = document.querySelector('.back-to-top');
+        
+        window.addEventListener('scroll', () => {
+            if (window.pageYOffset > 300) {
+                backToTopButton.classList.add('active');
+            } else {
+                backToTopButton.classList.remove('active');
+            }
+        });
+        
+        backToTopButton.addEventListener('click', (e) => {
+            e.preventDefault();
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+        });
+        
+        // Smooth scrolling for navigation links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                
+                const targetId = this.getAttribute('href');
+                if (targetId === '#') return;
+                
+                const targetElement = document.querySelector(targetId);
+                if (targetElement) {
+                    window.scrollTo({
+                        top: targetElement.offsetTop - 80,
+                        behavior: 'smooth'
+                    });
+                    
+                    // Close mobile menu if open
+                    const navbarCollapse = document.querySelector('.navbar-collapse');
+                    if (navbarCollapse.classList.contains('show')) {
+                        const bsCollapse = new bootstrap.Collapse(navbarCollapse);
+                        bsCollapse.hide();
+                    }
+                }
+            });
+        });
+        
+        // Change navbar style on scroll
+        const navbar = document.querySelector('.navbar');
+        
+        window.addEventListener('scroll', () => {
+            if (window.pageYOffset > 50) {
+                navbar.classList.add('navbar-scrolled', 'shadow');
+            } else {
+                navbar.classList.remove('navbar-scrolled', 'shadow');
+            }
+        });
+    </script>
+</body>
+</html>

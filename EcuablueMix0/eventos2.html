@@ -1,0 +1,548 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Vida Empresarial</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&family=Playfair+Display:wght@700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css"/>
+    <style>
+        :root {
+            --azul-oscuro: #1a428a;
+            --morado: #722282;
+            --verde: #3dae2b;
+            --azul-claro: #0093c9;
+            --amarillo: #ffe500;
+            --rosa: #d43861;
+        }
+        
+        .empresa-actividades {
+            font-family: 'Poppins', sans-serif;
+            padding: 4rem 2rem;
+            background-color: #f9f9ff;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .hero-section {
+            text-align: center;
+            margin-bottom: 4rem;
+            position: relative;
+        }
+        
+        .hero-title {
+            font-family: 'Playfair Display', serif;
+            font-size: 3.5rem;
+            margin-bottom: 1rem;
+            color: var(--azul-oscuro);
+            position: relative;
+            display: inline-block;
+        }
+        
+        .hero-title:after {
+            content: '';
+            position: absolute;
+            bottom: -10px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 100px;
+            height: 4px;
+            background: linear-gradient(to right, var(--morado), var(--rosa));
+            border-radius: 2px;
+        }
+        
+        .hero-subtitle {
+            color: var(--azul-oscuro);
+            font-weight: 300;
+            max-width: 700px;
+            margin: 0 auto 2rem;
+            font-size: 1.2rem;
+        }
+        
+        .timeline-container {
+            position: relative;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+        
+        .timeline-line {
+            position: absolute;
+            width: 6px;
+            background: linear-gradient(to bottom, var(--azul-claro), var(--verde));
+            top: 0;
+            bottom: 0;
+            left: 50%;
+            margin-left: -3px;
+            border-radius: 3px;
+        }
+        
+        .timeline-item {
+            padding: 10px 40px;
+            position: relative;
+            width: 50%;
+            box-sizing: border-box;
+            margin-bottom: 3rem;
+            opacity: 0;
+            transition: opacity 0.5s ease;
+        }
+        
+        .timeline-item.visible {
+            opacity: 1;
+        }
+        
+        .timeline-item:nth-child(odd) {
+            left: 0;
+        }
+        
+        .timeline-item:nth-child(even) {
+            left: 50%;
+        }
+        
+        .timeline-content {
+            padding: 20px 30px;
+            background: white;
+            border-radius: 15px;
+            box-shadow: 0 5px 25px rgba(0,0,0,0.1);
+            position: relative;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+        
+        .timeline-content:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 15px 35px rgba(0,0,0,0.15);
+        }
+        
+        .timeline-item:nth-child(odd) .timeline-content {
+            border-left: 5px solid var(--morado);
+        }
+        
+        .timeline-item:nth-child(even) .timeline-content {
+            border-right: 5px solid var(--rosa);
+        }
+        
+        .timeline-date {
+            color: var(--azul-claro);
+            font-weight: 600;
+            margin-bottom: 0.5rem;
+            display: flex;
+            align-items: center;
+        }
+        
+        .timeline-date i {
+            margin-right: 8px;
+            font-size: 1.2rem;
+        }
+        
+        .timeline-title {
+            font-size: 1.4rem;
+            margin-bottom: 1rem;
+            color: var(--azul-oscuro);
+        }
+        
+        .timeline-description {
+            color: #666;
+            line-height: 1.6;
+            margin-bottom: 1rem;
+        }
+        
+        .timeline-category {
+            display: inline-block;
+            padding: 0.3rem 1rem;
+            border-radius: 20px;
+            font-size: 0.8rem;
+            font-weight: 600;
+            margin-bottom: 1rem;
+        }
+        
+        .category-event {
+            background-color: rgba(58, 174, 43, 0.1);
+            color: var(--verde);
+        }
+        
+        .category-promo {
+            background-color: rgba(255, 229, 0, 0.1);
+            color: darken(var(--amarillo), 20%);
+        }
+        
+        .category-media {
+            background-color: rgba(26, 66, 138, 0.1);
+            color: var(--azul-oscuro);
+        }
+        
+        .category-collab {
+            background-color: rgba(210, 56, 97, 0.1);
+            color: var(--rosa);
+        }
+        
+        .timeline-media {
+            margin-top: 1rem;
+            border-radius: 10px;
+            overflow: hidden;
+        }
+        
+        .timeline-media img {
+            width: 100%;
+            height: auto;
+            border-radius: 10px;
+            transition: transform 0.5s ease;
+        }
+        
+        .timeline-content:hover .timeline-media img {
+            transform: scale(1.03);
+        }
+        
+        .timeline-item:nth-child(odd) .timeline-content:after {
+            content: '';
+            position: absolute;
+            width: 20px;
+            height: 20px;
+            right: -10px;
+            top: 30px;
+            background-color: white;
+            border: 4px solid var(--morado);
+            border-radius: 50%;
+            z-index: 1;
+        }
+        
+        .timeline-item:nth-child(even) .timeline-content:after {
+            content: '';
+            position: absolute;
+            width: 20px;
+            height: 20px;
+            left: -10px;
+            top: 30px;
+            background-color: white;
+            border: 4px solid var(--rosa);
+            border-radius: 50%;
+            z-index: 1;
+        }
+        
+        .filter-buttons {
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+            gap: 1rem;
+            margin-bottom: 3rem;
+        }
+        
+        .filter-btn {
+            background: white;
+            border: 2px solid var(--azul-oscuro);
+            color: var(--azul-oscuro);
+            padding: 0.6rem 1.5rem;
+            border-radius: 30px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+        
+        .filter-btn:hover, .filter-btn.active {
+            background: var(--azul-oscuro);
+            color: white;
+        }
+        
+        .filter-btn.category-promo:hover, .filter-btn.category-promo.active {
+            background: var(--amarillo);
+            border-color: var(--amarillo);
+            color: #333;
+        }
+        
+        .filter-btn.category-event:hover, .filter-btn.category-event.active {
+            background: var(--verde);
+            border-color: var(--verde);
+            color: white;
+        }
+        
+        .filter-btn.category-media:hover, .filter-btn.category-media.active {
+            background: var(--azul-claro);
+            border-color: var(--azul-claro);
+            color: white;
+        }
+        
+        .filter-btn.category-collab:hover, .filter-btn.category-collab.active {
+            background: var(--rosa);
+            border-color: var(--rosa);
+            color: white;
+        }
+        
+        @media (max-width: 768px) {
+            .timeline-line {
+                left: 31px;
+            }
+            
+            .timeline-item {
+                width: 100%;
+                padding-left: 70px;
+                padding-right: 25px;
+            }
+            
+            .timeline-item:nth-child(even) {
+                left: 0;
+            }
+            
+            .timeline-item:nth-child(odd) .timeline-content:after,
+            .timeline-item:nth-child(even) .timeline-content:after {
+                left: -39px;
+                top: 30px;
+            }
+            
+            .hero-title {
+                font-size: 2.5rem;
+            }
+        }
+        
+        /* Animación de burbujas flotantes */
+        .bubble {
+            position: absolute;
+            border-radius: 50%;
+            background: rgba(114, 34, 130, 0.1);
+            animation: floatBubble 15s infinite linear;
+            z-index: -1;
+        }
+        
+        @keyframes floatBubble {
+            0% { transform: translateY(0) rotate(0deg); opacity: 0.8; }
+            50% { transform: translateY(-100px) rotate(180deg); opacity: 0.3; }
+            100% { transform: translateY(0) rotate(360deg); opacity: 0.8; }
+        }
+        
+        /* Sección de newsletter */
+        .newsletter-section {
+            background: linear-gradient(135deg, var(--azul-oscuro) 0%, var(--morado) 100%);
+            padding: 3rem 2rem;
+            border-radius: 15px;
+            max-width: 1000px;
+            margin: 4rem auto;
+            text-align: center;
+            color: white;
+        }
+        
+        .newsletter-title {
+            font-size: 2rem;
+            margin-bottom: 1rem;
+        }
+        
+        .newsletter-subtitle {
+            margin-bottom: 2rem;
+            opacity: 0.9;
+        }
+        
+        .newsletter-form {
+            display: flex;
+            max-width: 500px;
+            margin: 0 auto;
+        }
+        
+        .newsletter-input {
+            flex: 1;
+            padding: 0.8rem 1.2rem;
+            border: none;
+            border-radius: 30px 0 0 30px;
+            font-size: 1rem;
+        }
+        
+        .newsletter-btn {
+            background: var(--amarillo);
+            color: #333;
+            border: none;
+            padding: 0 1.5rem;
+            border-radius: 0 30px 30px 0;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+        
+        .newsletter-btn:hover {
+            background: #ffcc00;
+        }
+        
+        @media (max-width: 600px) {
+            .newsletter-form {
+                flex-direction: column;
+            }
+            
+            .newsletter-input {
+                border-radius: 30px;
+                margin-bottom: 1rem;
+            }
+            
+            .newsletter-btn {
+                border-radius: 30px;
+                padding: 0.8rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <section class="empresa-actividades">
+        <!-- Burbujas decorativas -->
+        <div class="bubble" style="width: 150px; height: 150px; top: 10%; left: 5%; animation-delay: 0s;"></div>
+        <div class="bubble" style="width: 80px; height: 80px; top: 70%; left: 80%; animation-delay: 2s;"></div>
+        <div class="bubble" style="width: 120px; height: 120px; top: 40%; left: 90%; animation-delay: 4s;"></div>
+        <div class="bubble" style="width: 200px; height: 200px; top: 80%; left: 10%; animation-delay: 1s;"></div>
+        
+        <div class="hero-section">
+            <h1 class="hero-title animate__animated animate__fadeInDown">Vida Empresarial</h1>
+            <p class="hero-subtitle animate__animated animate__fadeIn animate__delay-1s">Descubre todo lo que acontece en nuestra empresa: eventos, colaboraciones, participación en medios y mucho más</p>
+        </div>
+        
+        <div class="filter-buttons animate__animated animate__fadeIn animate__delay-2s">
+            <button class="filter-btn active" data-filter="all">Todo</button>
+            <button class="filter-btn category-event" data-filter="event">Eventos</button>
+            <button class="filter-btn category-promo" data-filter="promo">Promociones</button>
+            <button class="filter-btn category-media" data-filter="media">En Medios</button>
+            <button class="filter-btn category-collab" data-filter="collab">Colaboraciones</button>
+        </div>
+        
+        <div class="timeline-container">
+            <div class="timeline-line"></div>
+            
+            <!-- Item 1 - Evento -->
+            <div class="timeline-item" data-category="event">
+                <div class="timeline-content">
+                    <div class="timeline-date"><i class="fas fa-calendar-alt"></i> 15 Julio 2023</div>
+                    <span class="timeline-category category-event">Evento</span>
+                    <h3 class="timeline-title">Feria Internacional de Alimentos Saludables</h3>
+                    <p class="timeline-description">Participamos como expositores principales en la feria más importante del sector, presentando nuestras nuevas líneas de productos orgánicos y sostenibles.</p>
+                    <div class="timeline-media">
+                        <img src="https://images.unsplash.com/photo-1515169067868-5387ec356754?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80" alt="Feria de alimentos">
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Item 2 - Promoción -->
+            <div class="timeline-item" data-category="promo">
+                <div class="timeline-content">
+                    <div class="timeline-date"><i class="fas fa-tag"></i> 10 Julio 2023</div>
+                    <span class="timeline-category category-promo">Promoción</span>
+                    <h3 class="timeline-title">Lanzamiento de la Promoción Verano 2023</h3>
+                    <p class="timeline-description">Durante todo el mes de julio, disfruta de un 20% de descuento en nuestra línea de productos estacionales y participa en el sorteo de un viaje a un spa ecológico.</p>
+                    <div class="timeline-media">
+                        <img src="https://images.unsplash.com/photo-1555529669-e69e7aa0ba9a?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80" alt="Promoción verano">
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Item 3 - En Medios -->
+            <div class="timeline-item" data-category="media">
+                <div class="timeline-content">
+                    <div class="timeline-date"><i class="fas fa-microphone-alt"></i> 5 Julio 2023</div>
+                    <span class="timeline-category category-media">En Medios</span>
+                    <h3 class="timeline-title">Entrevista en Radio Nacional</h3>
+                    <p class="timeline-description">Nuestro director general participó en el programa "Negocios del Futuro" hablando sobre sostenibilidad y emprendimiento en la industria alimentaria.</p>
+                    <div class="timeline-media">
+                        <img src="https://images.unsplash.com/photo-1563213127-a427af0315e1?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80" alt="Entrevista radio">
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Item 4 - Colaboración -->
+            <div class="timeline-item" data-category="collab">
+                <div class="timeline-content">
+                    <div class="timeline-date"><i class="fas fa-handshake"></i> 28 Junio 2023</div>
+                    <span class="timeline-category category-collab">Colaboración</span>
+                    <h3 class="timeline-title">Alianza con Fundación "Alimentos para Todos"</h3>
+                    <p class="timeline-description">Firmamos un convenio de colaboración para donar el 1% de nuestras ventas a programas de alimentación infantil en zonas vulnerables.</p>
+                    <div class="timeline-media">
+                        <img src="https://images.unsplash.com/photo-1521791136064-7986c2920216?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80" alt="Firma convenio">
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Item 5 - Evento -->
+            <div class="timeline-item" data-category="event">
+                <div class="timeline-content">
+                    <div class="timeline-date"><i class="fas fa-calendar-alt"></i> 20 Junio 2023</div>
+                    <span class="timeline-category category-event">Evento</span>
+                    <h3 class="timeline-title">Taller de Cocina Saludable en nuestra sede</h3>
+                    <p class="timeline-description">Realizamos un taller gratuito para la comunidad enseñando técnicas de cocina saludable usando nuestros productos.</p>
+                    <div class="timeline-media">
+                        <img src="https://images.unsplash.com/photo-1547592180-85f173990554?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80" alt="Taller cocina">
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Item 6 - En Medios -->
+            <div class="timeline-item" data-category="media">
+                <div class="timeline-content">
+                    <div class="timeline-date"><i class="fas fa-newspaper"></i> 15 Junio 2023</div>
+                    <span class="timeline-category category-media">En Medios</span>
+                    <h3 class="timeline-title">Reportaje en la Revista "Emprendedores"</h3>
+                    <p class="timeline-description">Nuestra empresa fue destacada en la sección "Negocios que Inspiran" por nuestro modelo de producción sostenible.</p>
+                    <div class="timeline-media">
+                        <img src="https://images.unsplash.com/photo-1585829365295-ab7cd400c7e9?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80" alt="Reportaje revista">
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Sección de Newsletter -->
+        <div class="newsletter-section animate__animated animate__fadeIn">
+            <h3 class="newsletter-title">Mantente informado</h3>
+            <p class="newsletter-subtitle">Suscríbete a nuestro boletín para recibir actualizaciones sobre nuestros eventos, promociones y noticias.</p>
+            <form class="newsletter-form">
+                <input type="email" class="newsletter-input" placeholder="Tu correo electrónico" required>
+                <button type="submit" class="newsletter-btn">Suscribirse</button>
+            </form>
+        </div>
+    </section>
+    
+    <!-- Font Awesome para iconos -->
+    <script src="https://kit.fontawesome.com/a076d05399.js" crossorigin="anonymous"></script>
+    
+    <!-- AOS Animation -->
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    
+    <script>
+        // Inicializar AOS
+        AOS.init({
+            duration: 1000,
+            once: true
+        });
+        
+        // Mostrar items de timeline con scroll
+        document.addEventListener('DOMContentLoaded', function() {
+            const timelineItems = document.querySelectorAll('.timeline-item');
+            
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.classList.add('visible');
+                    }
+                });
+            }, { threshold: 0.1 });
+            
+            timelineItems.forEach(item => {
+                observer.observe(item);
+            });
+            
+            // Filtrado por categorías
+            const filterButtons = document.querySelectorAll('.filter-btn');
+            filterButtons.forEach(button => {
+                button.addEventListener('click', function() {
+                    // Quitar active de todos los botones
+                    filterButtons.forEach(btn => btn.classList.remove('active'));
+                    // Añadir active al botón clickeado
+                    this.classList.add('active');
+                    
+                    const filterValue = this.getAttribute('data-filter');
+                    const items = document.querySelectorAll('.timeline-item');
+                    
+                    items.forEach(item => {
+                        if (filterValue === 'all') {
+                            item.style.display = 'block';
+                        } else {
+                            if (item.getAttribute('data-category') === filterValue) {
+                                item.style.display = 'block';
+                            } else {
+                                item.style.display = 'none';
+                            }
+                        }
+                    });
+                });
+            });
+        });
+    </script>
+</body>
+</html>

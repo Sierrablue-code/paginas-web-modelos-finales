@@ -1,0 +1,325 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sabor & Creatividad</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css"/>
+    <link href="./assets/css/main.css" rel="stylesheet">
+    <style>
+        :root {
+            --azul-oscuro: #1a428a;
+            --morado: #722282;
+            --verde: #3dae2b;
+            --azul-claro: #0093c9;
+            --amarillo: #ffe500;
+            --rosa: #d43861;
+        }
+        
+        .blogs-recetas {
+            font-family: 'Poppins', sans-serif;
+            padding: 4rem 2rem;
+            background: linear-gradient(135deg, rgba(26,66,138,0.1) 0%, rgba(114,34,130,0.1) 100%);
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .section-header {
+            text-align: center;
+            margin-bottom: 3rem;
+        }
+        
+        .section-title {
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+            background: linear-gradient(to right, var(--morado), var(--rosa));
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+            display: inline-block;
+        }
+        
+        .section-subtitle {
+            color: var(--azul-oscuro);
+            font-weight: 300;
+            max-width: 700px;
+            margin: 0 auto;
+        }
+        
+        .blogs-container {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 2rem;
+        }
+        
+        .blog-card {
+            background: white;
+            border-radius: 15px;
+            overflow: hidden;
+            width: 350px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+            transition: all 0.3s ease;
+            position: relative;
+        }
+        
+        .blog-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 35px rgba(0,0,0,0.15);
+        }
+        
+        .card-image {
+            height: 200px;
+            overflow: hidden;
+            position: relative;
+        }
+        
+        .card-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.5s ease;
+        }
+        
+        .blog-card:hover .card-image img {
+            transform: scale(1.1);
+        }
+        
+        .card-category {
+            position: absolute;
+            top: 15px;
+            right: 15px;
+            background: var(--verde);
+            color: white;
+            padding: 0.3rem 1rem;
+            border-radius: 20px;
+            font-size: 0.8rem;
+            font-weight: 600;
+        }
+        
+        .card-content {
+            padding: 1.5rem;
+        }
+        
+        .card-date {
+            color: var(--azul-claro);
+            font-size: 0.9rem;
+            margin-bottom: 0.5rem;
+        }
+        
+        .card-title {
+            font-size: 1.3rem;
+            margin-bottom: 1rem;
+            color: var(--azul-oscuro);
+        }
+        
+        .card-excerpt {
+            color: #666;
+            margin-bottom: 1.5rem;
+            line-height: 1.5;
+        }
+        
+        .card-footer {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            border-top: 1px solid #eee;
+            padding-top: 1rem;
+        }
+        
+        .read-more {
+            color: var(--rosa);
+            text-decoration: none;
+            font-weight: 600;
+            display: flex;
+            align-items: center;
+        }
+        
+        .read-more:hover {
+            color: var(--morado);
+        }
+        
+        .read-more i {
+            margin-left: 5px;
+            transition: transform 0.3s ease;
+        }
+        
+        .read-more:hover i {
+            transform: translateX(5px);
+        }
+        
+        .card-author {
+            display: flex;
+            align-items: center;
+        }
+        
+        .author-avatar {
+            width: 30px;
+            height: 30px;
+            border-radius: 50%;
+            margin-right: 10px;
+            object-fit: cover;
+        }
+        
+        .author-name {
+            color: var(--azul-oscuro);
+            font-size: 0.9rem;
+        }
+        
+        .floating-elements {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            top: 0;
+            left: 0;
+            pointer-events: none;
+            z-index: -1;
+        }
+        
+        .floating-element {
+            position: absolute;
+            border-radius: 50%;
+            opacity: 0.1;
+            animation: float 15s infinite linear;
+        }
+        
+        @keyframes float {
+            0% { transform: translateY(0) rotate(0deg); }
+            50% { transform: translateY(-20px) rotate(180deg); }
+            100% { transform: translateY(0) rotate(360deg); }
+        }
+        
+        .view-all {
+            display: block;
+            text-align: center;
+            margin-top: 3rem;
+        }
+        
+        .view-all-btn {
+            background: linear-gradient(to right, var(--morado), var(--rosa));
+            color: white;
+            border: none;
+            padding: 0.8rem 2rem;
+            border-radius: 30px;
+            font-size: 1rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            box-shadow: 0 5px 15px rgba(210,56,97,0.3);
+        }
+        
+        .view-all-btn:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 8px 20px rgba(210,56,97,0.4);
+        }
+        
+        @media (max-width: 768px) {
+            .blogs-container {
+                flex-direction: column;
+                align-items: center;
+            }
+            
+            .blog-card {
+                width: 100%;
+                max-width: 350px;
+            }
+            
+            .section-title {
+                font-size: 2rem;
+            }
+        }
+    </style>
+</head>
+<body>
+   
+    <section class="blogs-recetas">
+        <div class="floating-elements">
+            <div class="floating-element" style="width: 100px; height: 100px; background: var(--amarillo); top: 10%; left: 5%; animation-delay: 0s;"></div>
+            <div class="floating-element" style="width: 80px; height: 80px; background: var(--verde); top: 70%; left: 80%; animation-delay: 2s;"></div>
+            <div class="floating-element" style="width: 60px; height: 60px; background: var(--azul-claro); top: 40%; left: 90%; animation-delay: 4s;"></div>
+            <div class="floating-element" style="width: 120px; height: 120px; background: var(--rosa); top: 80%; left: 10%; animation-delay: 1s;"></div>
+        </div>
+        
+        <div class="section-header">
+            <h2 class="section-title animate__animated animate__fadeInDown">Sabor & Creatividad</h2>
+            <p class="section-subtitle animate__animated animate__fadeIn animate__delay-1s">Descubre nuestras recetas exclusivas y artículos sobre gastronomía, salud y tendencias culinarias</p>
+        </div>
+        
+        <div class="blogs-container">
+            <!-- Tarjeta 1 -->
+            <div class="blog-card animate__animated animate__fadeInUp animate__delay-1s">
+                <div class="card-image">
+                    <img src="https://images.unsplash.com/photo-1546069901-ba9599a7e63c?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80" alt="Receta saludable">
+                    <span class="card-category">Receta</span>
+                </div>
+                <div class="card-content">
+                    <div class="card-date">15 Julio 2023</div>
+                    <h3 class="card-title">Ensalada de quinoa con aguacate y mango</h3>
+                    <p class="card-excerpt">Una combinación perfecta de sabores dulces y salados que te proporcionará energía para todo el día.</p>
+                    <div class="card-footer">
+                        <a href="#" class="read-more">Leer más <i class="fas fa-arrow-right"></i></a>
+                        <div class="card-author">
+                            <img src="https://randomuser.me/api/portraits/women/32.jpg" alt="Autor" class="author-avatar">
+                            <span class="author-name">María Gómez</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Tarjeta 2 -->
+            <div class="blog-card animate__animated animate__fadeInUp animate__delay-2s">
+                <div class="card-image">
+                    <img src="https://images.unsplash.com/photo-1490645935967-10de6ba17061?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80" alt="Consejos de cocina">
+                    <span class="card-category">Blog</span>
+                </div>
+                <div class="card-content">
+                    <div class="card-date">10 Julio 2023</div>
+                    <h3 class="card-title">5 utensilios que revolucionarán tu cocina</h3>
+                    <p class="card-excerpt">Descubre los utensilios de cocina que harán tu vida más fácil y te ayudarán a preparar platos profesionales.</p>
+                    <div class="card-footer">
+                        <a href="#" class="read-more">Leer más <i class="fas fa-arrow-right"></i></a>
+                        <div class="card-author">
+                            <img src="https://randomuser.me/api/portraits/men/45.jpg" alt="Autor" class="author-avatar">
+                            <span class="author-name">Carlos Ruiz</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Tarjeta 3 -->
+            <div class="blog-card animate__animated animate__fadeInUp animate__delay-3s">
+                <div class="card-image">
+                    <img src="https://images.unsplash.com/photo-1512621776951-a57141f2eefd?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80" alt="Postre saludable">
+                    <span class="card-category">Receta</span>
+                </div>
+                <div class="card-content">
+                    <div class="card-date">5 Julio 2023</div>
+                    <h3 class="card-title">Brownie de chocolate sin azúcar añadido</h3>
+                    <p class="card-excerpt">Disfruta de este delicioso postre sin remordimientos. Preparado con dátiles y cacao puro.</p>
+                    <div class="card-footer">
+                        <a href="#" class="read-more">Leer más <i class="fas fa-arrow-right"></i></a>
+                        <div class="card-author">
+                            <img src="https://randomuser.me/api/portraits/women/68.jpg" alt="Autor" class="author-avatar">
+                            <span class="author-name">Ana Torres</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <!-- Font Awesome para iconos -->
+    <script src="https://kit.fontawesome.com/a076d05399.js" crossorigin="anonymous"></script>
+    
+    <!-- AOS Animation -->
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    <script>
+        AOS.init({
+            duration: 1000,
+            once: true
+        });
+    </script>
+</body>
+</html>
